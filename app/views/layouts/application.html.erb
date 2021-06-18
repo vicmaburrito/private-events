@@ -14,6 +14,42 @@
          <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
+ 	<nav class="navbar is-link">
+  		<div class="navbar-brand">
+  		<%= link_to root_path, class: "navbar-item", style: 'text-decoration:none;' do%>
+  			<h1 class="tit-nav title is-5">Welcome</h1>
+  		<% end %>
+			<div class="navbar-burger burger" data-target="navbarExample">
+					<span></span>
+					<span></span>
+					<span></span>
+  		</div>
+  	 </div>
+
+			<div id="navbarExample" class="navbar-menu">
+				<div class="navbar-end">
+          <div class="navbar-item">
+					<div class="field is-grouped">
+            <% if user_signed_in? %>
+     			<p class="control">
+					<%= link_to 'New event', new_event_path, class: "button is-primary " %>
+				</p>
+              <p>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-primary" %>
+              </p>
+            <% else %>
+            <p class="control">
+              <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
+            </p>
+						<p class="control">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %>
+            </p>
+            <% end %>
+            </div>
+					</div>
+				</div>
+			</div>
+  	</nav>
     <%= yield %>
   </body>
 </html>

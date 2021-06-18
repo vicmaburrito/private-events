@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bulma";
+
+ .tit-nav {
+     color: white;
+ }
+ .descrip {
+
+    span{
+font-size: 3vh;
+  font-weight: strong;
+    } 
+    p{
+     font-size: 3vh;
+ }
+}

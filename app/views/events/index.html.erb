@@ -1,33 +1,58 @@
 <p id="notice"><%= notice %></p>
+<div class="section">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box">
+        <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+          <ul>
+              <li><%= link_to 'New Event', new_event_path%></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 
-<h1>Events</h1>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="colum is-three-quarters">
+        <h1 class="title is-3">Events</h1>
+          <% @events.each do |event| %>
+            <div class="box descrip">
+              <div class="level-item">
+                <p>Event Name</p>
+              </div>
+              <div class="level-item m-1">
+                <span><%= event.name %></span>
+              </div>
+              <div class="box">
+                <div class="level-item">
+                  <p>Date: </p>
+                    <span><%= event.start_time.strftime(" %m-%d at: %H:%M") %><strong> --- </strong><%= event.end_time.strftime("%m-%d-%Y at: %H:%M")  %></span>
+                </div>
+              </div>
+              <div class="level-item">
+                <p>User id:</p>
+                  <span><%= event.user_id %></span>
+              </div>
+              <% if user_signed_in? %>
+                <div class="card">
+                  <footer class="card-footer">
+                    <%= link_to 'Show', event, class:"card-footer-item" %>
+                    <%= link_to 'Edit', edit_event_path(event), class:"card-footer-item"%>
+                    <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class:"card-footer-item" %>
+                  </footer>
+                </div>
+              <%else%>
+                <%= link_to 'Show', event,class:"button is-info" %>
+              <%end%>
+            </div>
+          <% end %><br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.user_id %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+          <% if user_signed_in? %>
+            <%= link_to 'New Event', new_event_path, class:"button is-info" %>
+          <%end%>
+      </div>
+    </div>
+  </div>
+</div>
