@@ -1,3 +1,4 @@
+<!--
 <p id="notice"><%= notice %></p>
 <div class="section">
   <div class="columns is-centered">
@@ -12,6 +13,7 @@
       </div>
     </div>
   </div>
+  
 
   <div class="container">
     <div class="columns is-centered">
@@ -53,6 +55,75 @@
             <%= link_to 'New Event', new_event_path, class:"button is-info" %>
           <%end%>
       </div>
+    </div>
+  </div>
+</div>
+-->
+
+<p id="notice"><%= notice %></p>
+<div class="section">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box">
+        <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+          <ul>
+              <li><%= link_to 'New Event', new_event_path%></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="top">
+  <div class="section">
+    <h2 class="title is-2">Upcoming Events</h2>
+    <div class="columns">
+      <% @events.each do |event| %>
+        <div class="column is-3">
+          <div class="card">
+            <header class="card-header">
+              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+            </header>
+            <div class="card-content">
+              <div class="content has-text-justified">
+                <%= event.name %>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item"><%= event.start_time %></p>
+              <p class="card-footer-item"><%= event.end_time %></p>
+            </footer>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="section">
+    <h2 class="title is-2">Past Events</h2>
+    <div class="columns">
+      <% @events.each do |event| %>
+        <div class="column is-3">
+          <div class="card">
+            <header class="card-header">
+              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+            </header>
+            <div class="card-content">
+              <div class="content has-text-justified">
+                <%= event.name %>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item"><%= event.start_time %></p>
+              <p class="card-footer-item"><%= event.end_time %></p>
+            </footer>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
