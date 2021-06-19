@@ -30,6 +30,17 @@
                 <p>Date:</p>
                 <span><%= event.date.strftime("%m-%d") %></span>
               </div>
+              <div class="level-item">
+                <% if event.date.past? == true %>
+                  <span> This event is already last</span>
+                <%end%>
+              </div>
+              <div class="level-item">
+                <label class="checkbox">
+                  <input type="checkbox">
+                    I agree to the <a href="#">terms and conditions</a>
+                  </label>
+              </div>
               <% if user_signed_in? %>
                 <div class="card">
                   <footer class="card-footer">
