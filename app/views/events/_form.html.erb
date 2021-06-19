@@ -15,22 +15,30 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+    <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+    <%= form.time_select :start_time %>
   </div>
-
-  <div class="field">
+    <div class="field">
     <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
+    <%= form.time_select :end_time %>
   </div>
-
   <div class="field">
-    <%= form.label :user_id %>
+    <%= form.label :Id_User %>
     <%= form.text_field :user_id %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
