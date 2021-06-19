@@ -5,3 +5,4 @@ class AddFieldsToEvents < ActiveRecord::Migration[6.1]
     add_column :events, :date, :datetime 
   end
 end
+ 
