@@ -14,42 +14,18 @@
  *= require_self
  */
 
-//  @import "bulma";
+ @import "bulma";
 
-//  .tit-nav {
-//      color: white;
-//  }
-//  .descrip {
+ .tit-nav {
+     color: white;
+ }
+ .descrip {
 
-//     span{
-// font-size: 3vh;
-//   font-weight: strong;
-//     } 
-//     p{
-//      font-size: 3vh;
-//  }
-// }
-
-@import "bulma";
-
-.notification:not(:last-child) {
-  margin-bottom: 0;
+    span{
+font-size: 3vh;
+  font-weight: strong;
+    } 
+    p{
+     font-size: 3vh;
+ }
 }
-  
-.top {
-  min-height:40vh;
-  overflow: auto;
-}
-
-.bottom {
-  min-height:40vh;
-  overflow: auto;
-}
-
-.footer {
-  padding: 1rem 0.5rem 0.5rem;
-  position: fixed;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-} 
