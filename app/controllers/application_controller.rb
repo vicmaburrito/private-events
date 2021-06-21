@@ -2,9 +2,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    unless current_user
-      redirect_to new_user_session_path, :alert => 'Sign up or Log in to see the events!'
-    end
+    redirect_to new_user_session_path, alert: 'Sign up or Log in to see the events!' unless current_user
   end
 
   def current_user
