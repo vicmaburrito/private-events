@@ -14,18 +14,20 @@
  *= require_self
  */
 
- @import "bulma";
+@import "bulma";
 
- .tit-nav {
-     color: white;
- }
- .descrip {
+.tit-nav {
+  color: white;
+}
 
-    span{
-font-size: 3vh;
-  font-weight: strong;
-    } 
-    p{
-     font-size: 3vh;
- }
+.descrip {
+
+  span {
+    font-size: 3vh;
+    font-weight: strong;
+  }
+
+  p {
+    font-size: 3vh;
+  }
 }
