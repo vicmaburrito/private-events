@@ -2,9 +2,9 @@
 <div class="container">
   <div class="columns is-centered">
     <div class="column is-half">
-    <h1 class ="title is-5">Upcoming events by: <%= current_user.email%><h1>
+    <h1 class ="title is-5">Upcoming events by: <%= current_user %><h1>
 <%= render 'future_events'%>
-<h1 class="title is-5">Last Events by:<%= current_user.email%></h1>
+<h1 class="title is-5">Last Events by:<%= current_user %></h1>
 <%= render 'past_events' %>
 
           <% if user_signed_in? %>
