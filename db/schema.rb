@@ -9,3 +9,16 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2021_06_22_175815) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.string "location"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+end
