@@ -18,12 +18,12 @@
           </div>
 
           <div class="column has-text-centered">
-            <h3 class="subtitle is-3">Upcoming Events: <%= @user.attended_events.where('date >= ?', Date.today).count %></h3>
+            <h3 class="subtitle is-3">Upcoming Events: <%= @user.attended_events.where('start_date >= ?', Date.today).count %></h3>
             <ul>
-              <% if @user.attended_events.where('date >= ?', Date.today).count.zero? %>
+              <% if @user.attended_events.where('start_date >= ?', Date.today).count.zero? %>
                 <p>No planned parties</p>
               <% else %>
-                <% @user.attended_events.where('date >= ?', Date.today).each do |event| %>
+                <% @user.attended_events.where('start_date >= ?', Date.today).each do |event| %>
                   <li class="has-text-centered"><%=link_to event.name, event_path(event) %></li>
                 <% end %>
               <% end %>
@@ -31,12 +31,12 @@
           </div>
 
           <div class="column has-text-centered">
-            <h3 class="subtitle is-3 has-text-centered">Attended Events: <%= @user.attended_events.where('date < ?', Date.today).count %></h3>
+            <h3 class="subtitle is-3 has-text-centered">Attended Events: <%= @user.attended_events.where('start_date < ?', Date.today).count %></h3>
             <ul>
               <% if @user.attended_events.empty? %>
                 <p>User is not partying</p>
               <% else %>
-                <% @user.attended_events.where('date < ?', Date.today).each do |event| %>
+                <% @user.attended_events.where('start_date < ?', Date.today).each do |event| %>
                   <li class="has-text-centered"><%=link_to event.name, event_path(event) %></li>
                 <% end %>
               <% end %>
