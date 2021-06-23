@@ -1,16 +1,62 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <div class="columns is-centered">
-    <div class="column is-half">
-    <h1 class ="title is-5">Upcoming events by: <%= current_user %><h1>
-<%= render 'future_events'%>
-<h1 class="title is-5">Last Events by:<%= current_user %></h1>
-<%= render 'past_events' %>
 
-          <% if user_signed_in? %>
-            <%= link_to 'New Event', new_event_path, class:"button is-info" %>
-          <%end%>
-      </div>
+<div class="top">
+  <div class="section">
+    <h2 class="title is-2">Upcoming Events</h2>
+    <div class="columns">
+      <% @events.upcoming.each do |event| %>
+        <div class="column is-3">
+          <div class="card">
+            <header class="card-header">
+              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+            </header>
+            <div class="card-content">
+              <div class="content has-text-justified">
+                <%= event.description.truncate_words(12) %>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item is-narrow"><%= event.start_date %></p>
+              <p class="card-footer-item"><%= event.location %></p>
+            </footer>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<div class="bottom">
+  <div class="section">
+    <h2 class="title is-2">Past Events</h2>
+    <div class="columns">
+      <% @events.past.each do |event| %>
+        <div class="column is-3">
+          <div class="card">
+            <header class="card-header">
+              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+            </header>
+            <div class="card-content">
+              <div class="content has-text-justified">
+                <%= event.description.truncate_words(12) %>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item"><%= event.start_date %></p>
+              <p class="card-footer-item"><%= event.location %></p>
+            </footer>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
+
+
+
+

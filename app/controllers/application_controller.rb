@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  def index; end
+
   private
 
   def require_login
-    redirect_to new_user_session_path, alert: 'Sign up or Log in to see the events!' unless current_user
+    redirect_to login_path, alert: 'Sign up or Log in to see the events!' unless current_user
   end
 
   def current_user

@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  start_time: 2021-06-17 14:35:46
-  end_time: 2021-06-17 14:35:46
-  user: one
+  start_date: 2021-06-22 18:58:15
+  location: MyString
+  description: MyText
 
 two:
   name: MyString
-  start_time: 2021-06-17 14:35:46
-  end_time: 2021-06-17 14:35:46
-  user: two
+  start_date: 2021-06-22 18:58:15
+  location: MyString
+  description: MyText
