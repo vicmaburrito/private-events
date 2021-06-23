@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-      @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   # GET /events/new
@@ -38,20 +38,20 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Event was successfully destroyed." }
+      format.html { redirect_to root_path, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-   def create
-     @event = current_user.events.build(event_params)
+  def create
+    @event = current_user.events.build(event_params)
 
-     if @event.save
-       flash[:success] = "Event '#{@event.name}' created!"
-       redirect_to @event
-     else
-      flash[:alert] = "Some error!"
-       render 'new'
-     end
-   end
+    if @event.save
+      flash[:success] = "Event '#{@event.name}' created!"
+      redirect_to @event
+    else
+      flash[:alert] = 'Some error!'
+      render 'new'
+    end
+  end
 end
