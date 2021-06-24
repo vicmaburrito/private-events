@@ -1,48 +1,16 @@
 class EventsController < ApplicationController
-  include EventsHelper
-  before_action :require_login, except: [:index]
-
-  # GET /events or /events.json
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @events = Event.all
-    @past_events = @events.past
-    @future_events = @events.upcoming 
   end
 
-  # GET /events/1 or /events/1.json
   def show
     @event = Event.find(params[:id])
   end
 
-  # GET /events/new
   def new
     @event = Event.new
-  end
-
-  # GET /events/1/edit
-  def edit
-    @event = Event.find(params[:id])
-  end
-
-  # PATCH/PUT /events/1 or /events/1.json
-  def update
-    @event = Event.find(params[:id])
-
-    if @event.update(event_params)
-      redirect_to @event
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /events/1 or /events/1.json
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   def create
@@ -52,8 +20,13 @@ class EventsController < ApplicationController
       flash[:success] = "Event '#{@event.name}' created!"
       redirect_to @event
     else
-      flash[:alert] = 'Some error!'
+      flash[:alert] = "Some error!"
       render 'new'
     end
   end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def event_params
+      params.require(:event).permit(:name, :start_date, :location, :description, :user_id)
+    end
 end

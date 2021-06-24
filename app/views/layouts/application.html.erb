@@ -45,21 +45,21 @@
                 <p class="control">
                   <%= link_to "Create event", new_event_path, class: "button is-white" %>
                 </p>
-                <% if current_user %>
-                  <p class="control">
-                    <%= link_to current_user.name, user_path(current_user), class: "button is-white" %>
-                  </p>
-                  <p>
-                    <%= link_to "Logout", logout_path, class: "button is-white" %>
-                  </p>
-                <% else %>
-                  <p class="control">
-                    <%= link_to 'Sign In', login_path, class: "button is-white" %>
-                  </p>
-                  <p class="control">
-                    <%= link_to 'Sign Up', signup_path, class: "button is-white" %>
-                  </p>
-                <% end %>
+            <% if user_signed_in? %>
+              <p class="control">
+                <%= link_to current_user.email, edit_user_registration_path, class: "button is-white" %>
+              </p>
+              <p>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-white" %>
+              </p>
+            <% else %>
+            <p class="control">
+              <%= link_to 'Sign In', new_user_session_path, class: "button is-white" %>
+            </p>
+						<p class="control">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "button is-white" %>
+            </p>
+            <% end %>
               </div>
             </div>
           </div>
