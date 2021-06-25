@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   include EventsHelper
-  before_action :require_login, except: [:index]
+  before_action :require_login, except: [:index, :show]
 
   # GET /events or /events.json
   def index
